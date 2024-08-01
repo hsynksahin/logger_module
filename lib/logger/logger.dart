@@ -1,11 +1,14 @@
 // Copyright (c) 2024. All rights reserved.
 //
 // @author: Hüseyin Küçükşahin
-// @last_update: 17.05.2024
+// @last_update: 01.08.2024
 
-/// **Version:** 1.0.0
+/// **Version:** 1.1.0
 ///
 /// This library is a complete logger system that can log both console & file.
+///
+/// There is a optional upload function that might be given when [initialize] being called.
+/// To log into Firebase Crashlytics etc.
 ///
 /// ***ANSI***
 ///

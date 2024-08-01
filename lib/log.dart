@@ -1,9 +1,9 @@
 // Copyright (c) 2024. All rights reserved.
 //
 // @author: Hüseyin Küçükşahin
-// @date: 17.05.2024
+// @date: 01.08.2024
 
-/// **Version:** 1.0.0
+/// **Version:** 1.1.0
 ///
 /// An interface for segregated Logger system
 ///
@@ -18,7 +18,7 @@
 /// - `logFileHidden` (bool) : uses a secure directory for the log file (default: `true`)
 /// - `logFileName` : (String) the saved log file's name (default: `'log'`). Result will be: `log_20231124T15.ans`
 /// - `logFileCount` : (int) the old log files to keep, the older ones will be removed. (default: `5`)
-/// - `logLevel` : (String) the log level of logger. Use `trace` or `all` to log everything. (default: `info`)
+/// - `logLevel` : (String) the log level of logger. Use `trace` or `all` to log everything. (default: `trace`)
 ///
 /// ***IOS***
 ///
@@ -27,6 +27,35 @@
 /// ```xml
 /// <key>UIFileSharingEnabled</key>
 /// <true/>
+/// ```
+///
+/// ***EXAMPLE***
+///
+/// Initialize specific logger by calling it's initializer on main method before the `runApp`.
+/// The `initialize` method in logger should change the [Log.logger] after initialization done.
+///
+/// ```dart
+/// main() async {
+///   WidgetsFlutterBinding.ensureInitialized();
+///
+///   await ZZLogger.initialize(
+///      onUpload: (exception, stack, {fatal = false, reason}) => Crashlytics.instance?.recordError(
+///        exception,
+///        stack,
+///        reason: reason,
+///        fatal: fatal,
+///        printDetails: true,
+///      ),
+///    );
+///
+///   runApp(const MyApp());
+/// }
+/// ```
+///
+/// Use the logger by calling static methods in [Log]
+///
+/// ```dart
+/// Log.info('Information');
 /// ```
 ///
 library logger_interface;
